@@ -1,6 +1,7 @@
 package com.founderz.findemy.domain.academy.service;
 
 import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest;
+import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
 import com.founderz.findemy.domain.academy.entity.Academy;
 import com.founderz.findemy.domain.academy.repository.AcademyRepository;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +45,13 @@ public class AcademyService {
         if(!passwordEncoder.matches(request.password(), academy.getPassword())) throw PasswordMismatchException.EXCEPTION;
 
         return jwtTokenProvider.receiveToken(request.account_id(), AuthElementDto.UserRole.ACADEMY);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AcademyResponse> findAllAcademies() {
+        return academyRepository.findAll()
+                .stream()
+                .map(AcademyResponse::of)
+                .toList();
     }
 }

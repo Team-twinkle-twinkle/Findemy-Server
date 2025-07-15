@@ -1,4 +1,4 @@
-package com.founderz.findemy.domain.academy.entity;
+package com.founderz.findemy.domain.academy.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
