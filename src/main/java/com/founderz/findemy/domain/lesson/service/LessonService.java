@@ -61,5 +61,15 @@ public class LessonService {
         academy.getNumbers().clear();
         academy.getNumbers().addAll(numberSet);
     }
+
+    @Transactional(readOnly = true)
+    public List<LessonDto> findLessons() {
+        Academy academy = facade.myAcademy();
+
+        return lessonRepository.findAllByAcademy(academy)
+                .stream()
+                .map(LessonDto::of)
+                .toList();
+    }
 }
 

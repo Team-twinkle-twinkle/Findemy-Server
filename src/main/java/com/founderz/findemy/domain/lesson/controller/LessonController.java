@@ -3,6 +3,7 @@ package com.founderz.findemy.domain.lesson.controller;
 import com.founderz.findemy.domain.lesson.controller.dto.LessonDto;
 import com.founderz.findemy.domain.lesson.service.LessonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +21,10 @@ public class LessonController {
     @PostMapping("/register")
     public void registerLesson(@RequestBody List<LessonDto> requests) {
         lessonService.registerLesson(requests);
+    }
+
+    @GetMapping()
+    public List<LessonDto> findLessons() {
+        return lessonService.findLessons();
     }
 }
