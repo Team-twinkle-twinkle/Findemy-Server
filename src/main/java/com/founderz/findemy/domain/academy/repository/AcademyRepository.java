@@ -16,4 +16,7 @@ public interface AcademyRepository extends JpaRepository<Academy, Long> {
 
     @Query("SELECT a FROM tbl_academy a LEFT JOIN FETCH a.subjects where a.id = :id")
     Optional<Academy> findByIdWithSubjects(Long id);
+
+    @Query("select distinct a from tbl_academy a left join fetch a.subjects where lower(a.academyName) like lower(concat('%', :academyName, '%'))")
+    List<Academy> findByNameContainingWithSubjects(String academyName);
 }

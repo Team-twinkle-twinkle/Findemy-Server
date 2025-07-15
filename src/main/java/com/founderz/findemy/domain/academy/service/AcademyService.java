@@ -83,4 +83,12 @@ public class AcademyService {
                 lessonList
         );
     }
+
+    @Transactional(readOnly = true)
+    public List<AcademyResponse> searchAcademiesByName(String academyName) {
+        return academyRepository.findByNameContainingWithSubjects(academyName)
+                .stream()
+                .map(AcademyResponse::of)
+                .toList();
+    }
 }
