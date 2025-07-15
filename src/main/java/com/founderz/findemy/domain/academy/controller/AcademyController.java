@@ -54,4 +54,9 @@ public class AcademyController {
     public List<AcademyResponse> searchAcademiesByName(@RequestParam String academyName) {
         return academyService.searchAcademiesByName(academyName);
     }
+
+    @GetMapping()
+    public AcademyInfo findAcademyInfo() {
+        return academyService.findAcademyInfo();
+    }
 }
