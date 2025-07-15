@@ -1,5 +1,6 @@
 package com.founderz.findemy.domain.academy.controller;
 
+import com.founderz.findemy.domain.academy.controller.dto.request.AcademyInfo;
 import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyDetail;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
@@ -27,6 +28,11 @@ public class AcademyController {
     @PostMapping("/register")
     public void registerAcademy(@RequestBody AcademyRequest request) {
         academyService.registerAcademy(request);
+    }
+
+    @PostMapping("/save-info")
+    public void saveInfo(@RequestBody AcademyInfo request) {
+        academyService.saveInfo(request);
     }
 
     @PostMapping("/login")

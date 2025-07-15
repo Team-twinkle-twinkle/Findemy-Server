@@ -76,4 +76,14 @@ public class Academy {
     )
     @Column(name = "number")
     private List<Number> numbers;
+
+    public void updateInfo(String name, String address, String tel, String imgUrl, String introduction, SiDo sido, SiGunGu sigungu) {
+        this.academyName = name;
+        this.address = address;
+        this.telNumber = tel;
+        this.academyImgUrl = imgUrl;
+        this.introduction = introduction;
+        this.sido = sido;
+        this.sigungu = sigungu;
+    }
 }

@@ -1,10 +1,12 @@
 package com.founderz.findemy.domain.academy.service;
 
+import com.founderz.findemy.domain.academy.controller.dto.request.AcademyInfo;
 import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyDetail;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
 import com.founderz.findemy.domain.academy.entity.Academy;
 import com.founderz.findemy.domain.academy.repository.AcademyRepository;
+import com.founderz.findemy.domain.academy.service.component.AcademyFacade;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;
 import com.founderz.findemy.domain.auth.dto.response.TokenResponse;
 import com.founderz.findemy.domain.lesson.controller.dto.LessonDto;
@@ -26,6 +28,7 @@ import java.util.List;
 public class AcademyService {
 
     private final AcademyRepository academyRepository;
+    private final AcademyFacade facade;
     private final LessonRepository lessonRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
@@ -40,6 +43,20 @@ public class AcademyService {
                         .sido(request.sido())
                         .sigungu(request.sigungu())
                         .build());
+    }
+
+    @Transactional
+    public void saveInfo(AcademyInfo request) {
+        Academy academy = facade.myAcademy(); // 실제 영속 엔티티
+        academy.updateInfo(
+                request.academy_name(),
+                request.address(),
+                request.tel_number(),
+                request.academy_img_url(),
+                request.introduction(),
+                request.si_do(),
+                request.si_gun_gu()
+        );
     }
 
     @Transactional
