@@ -28,6 +28,7 @@ cloud:
       secretKey: ${SECRET_KEY}
     s3:
       bucket: first-step-bucket
+      url-prefix: ${Turkey_IMAGE_FOLDER:ewafaewfw}
     region:
       static: ap-northeast-2
   stack:

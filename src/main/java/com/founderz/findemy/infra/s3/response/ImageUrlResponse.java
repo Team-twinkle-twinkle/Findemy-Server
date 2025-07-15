@@ -1,4 +1,4 @@
-package com.founderz.findemy.infra.s3.dto.response;
+package com.founderz.findemy.infra.s3.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

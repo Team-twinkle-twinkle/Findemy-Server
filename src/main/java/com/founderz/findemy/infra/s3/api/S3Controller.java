@@ -1,6 +1,6 @@
 package com.founderz.findemy.infra.s3.api;
 
-import com.founderz.findemy.infra.s3.dto.response.ImageUrlResponse;
+import com.founderz.findemy.infra.s3.response.ImageUrlResponse;
 import com.founderz.findemy.infra.s3.service.CreateImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
