@@ -30,4 +30,8 @@ public class Academy {
     @Enumerated(EnumType.STRING)
     @Column(name = "sigungu", nullable = false)
     private SiGunGu sigungu;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "subject", nullable = false)
+    private Subject subject;
 }
