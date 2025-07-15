@@ -138,6 +138,7 @@ public enum SiGunGu {
     GYEONGGI_YEONCHEON_GUN("경기도, 연천군"),
 
     //충청북도
+    CHUNGBUK("충청북도, 전체"),
     CHUNGBUK_CHEONGJU_SI("충청북도, 청주시"),
     CHUNGBUK_CHUNGJU_SI("충청북도, 충주시"),
     CHUNGBUK_JECHEON_SI("충청북도, 제천시"),
@@ -151,6 +152,7 @@ public enum SiGunGu {
     CHUNGBUK_JEUNGPYEONG_GUN("충청북도, 증평군"),
 
     //충남
+    CHUNGNAM("충청남도, 전체"),
     CHUNGNAM_CHEONAN_SI("충청남도, 천안시"),
     CHUNGNAM_GONGJU_SI("충청남도, 공주시"),
     CHUNGNAM_BORYEONG_SI("충청남도, 보령시"),
@@ -168,6 +170,7 @@ public enum SiGunGu {
     CHUNGNAM_TAEAN_GUN("충청남도, 태안군"),
 
     //전라남도
+    JEONNAM("전라남도, 전체"),
     JEONNAM_MOKPO_SI("전라남도, 목포시"),
     JEONNAM_YEOSU_SI("전라남도, 여수시"),
     JEONNAM_SUNCHEON_SI("전라남도, 순천시"),
@@ -192,6 +195,7 @@ public enum SiGunGu {
     JEONNAM_SINAN_GUN("전라남도, 신안군"),
 
     //전라북도
+    JEONBUK("전북, 전체"),
     JEONBUK_JEONJU_SI("전라북도, 전주시"),
     JEONBUK_GUNSAN_SI("전라북도, 군산시"),
     JEONBUK_IKSAN_SI("전라북도, 익산시"),
@@ -208,6 +212,7 @@ public enum SiGunGu {
     JEONBUK_BUAN_GUN("전라북도, 부안군"),
 
     //경상남도
+    GYEONGNAM("경남, 전체"),
     GYEONGNAM_CHANGWON_SI("경상남도, 창원시"),
     GYEONGNAM_JINJU_SI("경상남도, 진주시"),
     GYEONGNAM_TONGYEONG_SI("경상남도, 통영시"),
@@ -228,6 +233,7 @@ public enum SiGunGu {
     GYEONGNAM_HAPCHEON_GUN("경상남도, 합천군"),
 
     //경상북도
+    GYEONGBUK("경상북도, 전체"),
     GYEONGBUK_POHANG_SI("경상북도, 포항시"),
     GYEONGBUK_GYEONGJU_SI("경상북도, 경주시"),
     GYEONGBUK_GIMCHEON_SI("경상북도, 김천시"),
@@ -254,6 +260,7 @@ public enum SiGunGu {
 
 
     //강원도
+    GANGWON("강원, 전체"),
     GANGWON_CHUNCHEON_SI("강원도, 춘천시"),
     GANGWON_WONJU_SI("강원도, 원주시"),
     GANGWON_GANGNEUNG_SI("강원도, 강릉시"),
@@ -274,7 +281,9 @@ public enum SiGunGu {
     GANGWON_YANGYANG_GUN("강원도, 양양군"),
 
     //제주특별자치도
+    JEJU("제주특별자치도, 전체"),
     JEJU_JEJU_SI("제주특별자치도, 제주시"),
     JEJU_SEOGWIPO_SI("제주특별자치도, 서귀포시");
+
     private final String name;
 }
