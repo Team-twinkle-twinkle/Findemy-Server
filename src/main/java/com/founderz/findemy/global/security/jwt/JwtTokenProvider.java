@@ -71,10 +71,10 @@ public class JwtTokenProvider {
 
     private String getSecret(AuthElementDto.UserRole role) {
         if (role.equals(AuthElementDto.UserRole.ACADEMY)) {
-            return jwtProperties.teacherSecret();
+            return jwtProperties.academySecret();
         }
 
-        return jwtProperties.studentSecret();
+        return jwtProperties.userSecret();
     }
 
     // 토큰에 담겨있는 userId로 SpringSecurity Authentication 정보를 반환하는 메서드

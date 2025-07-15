@@ -19,6 +19,8 @@ jwt:
   secret: ${SECRET}
   accessExpiration: 271000
   refreshExpiration: 604800
+  academySecret: ${ACADEMY_SECRET}
+  userSecret: ${USER_SECRET}
 cloud:
   aws:
     credentials:

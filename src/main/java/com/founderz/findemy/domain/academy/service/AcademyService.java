@@ -7,10 +7,13 @@ import com.founderz.findemy.domain.academy.repository.AcademyRepository;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;
 import com.founderz.findemy.domain.auth.dto.response.TokenResponse;
 import com.founderz.findemy.domain.user.controller.dto.request.AuthRequest;
+import com.founderz.findemy.global.exception.domain.auth.NotAuthenticatedException;
 import com.founderz.findemy.global.exception.domain.student.UserNotFoundException;
 import com.founderz.findemy.global.exception.domain.user.PasswordMismatchException;
 import com.founderz.findemy.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +52,7 @@ public class AcademyService {
 
     @Transactional(readOnly = true)
     public List<AcademyResponse> findAllAcademies() {
-        return academyRepository.findAll()
+        return academyRepository.findAllWithSubjects()
                 .stream()
                 .map(AcademyResponse::of)
                 .toList();

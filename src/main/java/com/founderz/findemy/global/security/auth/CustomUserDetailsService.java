@@ -30,9 +30,9 @@ class CustomUserDetailsService implements UserDetailsService {
         var userSecretId = parts[1];
         String type;
 
-        if (userSecretId.equals(jwtProperties.teacherSecret())) {
+        if (userSecretId.equals(jwtProperties.academySecret())) {
             type = handleAcademy(userId);
-        } else if (userSecretId.equals(jwtProperties.studentSecret())) {
+        } else if (userSecretId.equals(jwtProperties.userSecret())) {
             type = handleUser(userId);
         } else {
             throw InvalidTokenException.EXCEPTION;
