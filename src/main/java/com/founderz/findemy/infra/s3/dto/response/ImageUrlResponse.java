@@ -1,6 +1,12 @@
 package com.founderz.findemy.infra.s3.dto.response;
 
-public record ImageUrlResponse(
-        String imageUrl
-) {}
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class ImageUrlResponse {
+
+    private String imageUrl;
+}
 
