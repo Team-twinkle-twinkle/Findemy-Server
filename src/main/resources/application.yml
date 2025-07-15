@@ -19,3 +19,14 @@ jwt:
   secret: ${SECRET}
   accessExpiration: 271000
   refreshExpiration: 604800
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${SECRET_KEY}
+    s3:
+      bucket: daedong
+    region:
+      static: ap-northeast-2
+  stack:
+    auto: false

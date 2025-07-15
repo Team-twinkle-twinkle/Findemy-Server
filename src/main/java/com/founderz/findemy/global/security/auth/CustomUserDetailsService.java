@@ -1,7 +1,9 @@
 package com.founderz.findemy.global.security.auth;
 
+import com.founderz.findemy.domain.academy.repository.AcademyRepository;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;
 import com.founderz.findemy.domain.user.repository.UserRepository;
+import com.founderz.findemy.global.exception.domain.academy.AcademyNotFoundException;
 import com.founderz.findemy.global.exception.domain.auth.InvalidTokenException;
 import com.founderz.findemy.global.exception.domain.student.UserNotFoundException;
 import com.founderz.findemy.global.security.jwt.JwtProperties;
@@ -16,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
-
-    //private final TeacherRepository teacherRepository;
-
+    private final AcademyRepository academyRepository;
     private final JwtProperties jwtProperties;
 
     @Override
@@ -30,10 +30,9 @@ class CustomUserDetailsService implements UserDetailsService {
         var userSecretId = parts[1];
         String type;
 
-//        if (userSecretId.equals(jwtProperties.teacherSecret())) {
-//            type = handleTeacher(userId);
-//        } else
-            if (userSecretId.equals(jwtProperties.studentSecret())) {
+        if (userSecretId.equals(jwtProperties.teacherSecret())) {
+            type = handleAcademy(userId);
+        } else if (userSecretId.equals(jwtProperties.studentSecret())) {
             type = handleUser(userId);
         } else {
             throw InvalidTokenException.EXCEPTION;
@@ -42,13 +41,13 @@ class CustomUserDetailsService implements UserDetailsService {
         return new CustomUserDetails(userId, type);
     }
 
-//    private String handleTeacher(String teacherId) {
-//        if (!teacherRepository.existsById(teacherId)) {
-//            throw TeacherNotFoundException.EXCEPTION;
-//        }
-//
-//        return AuthElementDto.UserRole.TEACHER.name();
-//    }
+    private String handleAcademy(String academyId) {
+        if (!academyRepository.existsByAccountId(academyId)) {
+            throw AcademyNotFoundException.EXCEPTION;
+        }
+
+        return AuthElementDto.UserRole.ACADEMY.name();
+    }
 
     private String handleUser(String userId) {
         if (!userRepository.existsByAccountId(userId)) {

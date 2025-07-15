@@ -60,7 +60,7 @@ class SecurityConfiguration {
                 )
 
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/user/signup", "/user/login").permitAll()
+                        .requestMatchers("/user/signup", "/user/login", "/academy/register", "/academy/login").permitAll()
                         .anyRequest().authenticated()
                 )
 

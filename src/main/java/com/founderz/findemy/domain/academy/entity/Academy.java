@@ -14,7 +14,7 @@ public class Academy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String accountId;
 
     @Column(nullable = false)
