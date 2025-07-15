@@ -55,7 +55,7 @@ public class AcademyController {
         return academyService.searchAcademiesByName(academyName);
     }
 
-    @GetMapping()
+    @GetMapping
     public AcademyInfo findAcademyInfo() {
         return academyService.findAcademyInfo();
     }

@@ -23,7 +23,7 @@ public class LessonController {
         lessonService.registerLesson(requests);
     }
 
-    @GetMapping()
+    @GetMapping
     public List<LessonDto> findLessons() {
         return lessonService.findLessons();
     }

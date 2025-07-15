@@ -5,8 +5,6 @@ import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyDetail;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
 import com.founderz.findemy.domain.academy.entity.Academy;
-import com.founderz.findemy.domain.academy.entity.enums.SiDo;
-import com.founderz.findemy.domain.academy.entity.enums.SiGunGu;
 import com.founderz.findemy.domain.academy.repository.AcademyRepository;
 import com.founderz.findemy.domain.academy.service.component.AcademyFacade;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;

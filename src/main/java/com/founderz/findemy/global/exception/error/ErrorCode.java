@@ -13,6 +13,12 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "일치하는 유저을 찾을 수 없습니다."),
     PASSWORD_MISMATCH(401, "비밀번호가 일치하지 않습니다."),
 
+    // academy
+    ACADEMY_NOT_FOUND(404, "일치하는 학원을 찾을 수 없습니다."),
+
+    // favorite
+    FAVORITE_NOT_FOUND(404, "찜한 학원을 찾을 수 없습니다."),
+
     // jwt
     EXPIRED_TOKEN(401, "만료된 토큰입니다."),
     INVALID_TOKEN(401, "검증되지 않은 토큰입니다."),
