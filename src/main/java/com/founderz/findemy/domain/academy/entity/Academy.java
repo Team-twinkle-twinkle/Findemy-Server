@@ -39,6 +39,9 @@ public class Academy {
     @Column
     private String academyImgUrl;
 
+    @Column
+    private String introduction;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "si_do", nullable = false)
     private SiDo sido;
@@ -46,10 +49,6 @@ public class Academy {
     @Enumerated(EnumType.STRING)
     @Column(name = "si_gun_gu", nullable = false)
     private SiGunGu sigungu;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "subject", nullable = false)
-    private Subject subject;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)

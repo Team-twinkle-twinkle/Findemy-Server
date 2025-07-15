@@ -2,7 +2,7 @@ package com.founderz.findemy.domain.lesson.service;
 
 import com.founderz.findemy.domain.academy.entity.Academy;
 import com.founderz.findemy.domain.academy.service.component.AcademyFacade;
-import com.founderz.findemy.domain.lesson.controller.dto.request.LessonRequest;
+import com.founderz.findemy.domain.lesson.controller.dto.LessonDto;
 import com.founderz.findemy.domain.lesson.entity.Lesson;
 import com.founderz.findemy.domain.lesson.entity.enums.Grade;
 import com.founderz.findemy.domain.lesson.entity.enums.Number;
@@ -24,7 +24,7 @@ public class LessonService {
     private final AcademyFacade facade;
 
     @Transactional
-    public void registerLesson(List<LessonRequest> requests) {
+    public void registerLesson(List<LessonDto> requests) {
         Academy academy = facade.myAcademy();
 
         List<Lesson> lessons = requests.stream()
@@ -45,7 +45,7 @@ public class LessonService {
         Set<Number> numberSet = new HashSet<>(academy.getNumbers());
 
         // 새로 추가된 값 반영
-        for (LessonRequest request : requests) {
+        for (LessonDto request : requests) {
             subjectSet.add(request.subject());
             gradeSet.add(request.grade());
             numberSet.add(request.number());

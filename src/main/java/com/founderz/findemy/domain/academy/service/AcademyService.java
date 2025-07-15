@@ -1,19 +1,20 @@
 package com.founderz.findemy.domain.academy.service;
 
 import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest;
+import com.founderz.findemy.domain.academy.controller.dto.response.AcademyDetail;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
 import com.founderz.findemy.domain.academy.entity.Academy;
 import com.founderz.findemy.domain.academy.repository.AcademyRepository;
 import com.founderz.findemy.domain.auth.dto.AuthElementDto;
 import com.founderz.findemy.domain.auth.dto.response.TokenResponse;
+import com.founderz.findemy.domain.lesson.controller.dto.LessonDto;
+import com.founderz.findemy.domain.lesson.repository.LessonRepository;
 import com.founderz.findemy.domain.user.controller.dto.request.AuthRequest;
-import com.founderz.findemy.global.exception.domain.auth.NotAuthenticatedException;
+import com.founderz.findemy.global.exception.domain.academy.AcademyNotFoundException;
 import com.founderz.findemy.global.exception.domain.student.UserNotFoundException;
 import com.founderz.findemy.global.exception.domain.user.PasswordMismatchException;
 import com.founderz.findemy.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ import java.util.List;
 public class AcademyService {
 
     private final AcademyRepository academyRepository;
+    private final LessonRepository lessonRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -56,5 +58,29 @@ public class AcademyService {
                 .stream()
                 .map(AcademyResponse::of)
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public AcademyDetail findAcademyDetail(Long id) {
+        Academy academy = academyRepository.findByIdWithSubjects(id)
+                .orElseThrow(()-> AcademyNotFoundException.EXCEPTION);
+
+        List<LessonDto> lessonList = lessonRepository.findAllByAcademy(academy)
+                .stream()
+                .map(LessonDto::of)
+                .toList();
+
+        return new AcademyDetail(
+                academy.getId(),
+                academy.getAcademyName(),
+                academy.getAcademyImgUrl(),
+                academy.getSido(),
+                academy.getSigungu(),
+                academy.getIntroduction(),
+                academy.getAddress(),
+                academy.getTelNumber(),
+                academy.getSubjects(),
+                lessonList
+        );
     }
 }

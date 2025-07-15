@@ -1,12 +1,14 @@
 package com.founderz.findemy.domain.academy.controller;
 
 import com.founderz.findemy.domain.academy.controller.dto.request.AcademyRequest;
+import com.founderz.findemy.domain.academy.controller.dto.response.AcademyDetail;
 import com.founderz.findemy.domain.academy.controller.dto.response.AcademyResponse;
 import com.founderz.findemy.domain.academy.service.AcademyService;
 import com.founderz.findemy.domain.auth.dto.response.TokenResponse;
 import com.founderz.findemy.domain.user.controller.dto.request.AuthRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +36,10 @@ public class AcademyController {
     @GetMapping("/all")
     public List<AcademyResponse> findAllAcademies() {
         return academyService.findAllAcademies();
+    }
+
+    @GetMapping("/{id}")
+    public AcademyDetail findAcademyDetail(@PathVariable Long id) {
+        return academyService.findAcademyDetail(id);
     }
 }

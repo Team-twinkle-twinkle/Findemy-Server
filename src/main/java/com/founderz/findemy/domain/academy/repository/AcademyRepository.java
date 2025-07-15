@@ -10,6 +10,10 @@ import java.util.Optional;
 public interface AcademyRepository extends JpaRepository<Academy, Long> {
     Optional<Academy> findByAccountId(String accountId);
     boolean existsByAccountId(String accountId);
+
     @Query("SELECT a FROM tbl_academy a LEFT JOIN FETCH a.subjects")
-    List<Academy> findAllWithSubjects(); // grades만 fetch
+    List<Academy> findAllWithSubjects();
+
+    @Query("SELECT a FROM tbl_academy a LEFT JOIN FETCH a.subjects where a.id = :id")
+    Optional<Academy> findByIdWithSubjects(Long id);
 }
